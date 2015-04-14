@@ -1,0 +1,50 @@
+extends layout
+
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p URL for  #{urltest}
+
+  .login
+    .row
+      .col-lg-6.col-lg-offset-3
+        form.bs-example.form-horizontal(method='post', action='')
+          fieldset
+            legend Take Input
+            if error
+              .alert.alert-dismissable.alert-danger.login-fail
+                button.close(type='button', data-dismiss='alert') &times;
+                p.
+                  #{error}
+            p.last-p.
+             
+            .form-group
+              label.col-lg-4.control-label(for='login') Login
+              .col-lg-4
+                input#login.form-control(type='text', name='login', placeholder='Login', autofocus)
+             .form-group
+              label.col-lg-4.control-label(for='expires') Expires
+              .col-lg-4
+                input#expires.form-control(type='text', name='expires', placeholder='Expires', autofocus)
+             .form-group
+              label.col-lg-4.control-label(for='accessKeyId') Access Key ID
+              .col-lg-4
+                input#accessKeyId.form-control(type='text', name='accessKeyId', placeholder='Access Key ID', autofocus)
+             .form-group
+              label.col-lg-4.control-label(for='secretAccessKey') Secret Access Key
+              .col-lg-4
+                input#secretAccessKey.form-control(type='text', name='secretAccessKey', placeholder='Secret Access Key', autofocus)
+             .form-group
+              label.col-lg-4.control-label(for='url') URL
+              .col-lg-4
+                input#url.form-control(type='text', name='url', placeholder='URL', autofocus)
+            
+
+
+            
+            .form-group
+              .col-lg-10.col-lg-offset-4
+                button.btn.btn-primary(type='submit') Submit
+
+  
