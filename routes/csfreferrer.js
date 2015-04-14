@@ -5,7 +5,7 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-  res.render('csfreferrer', { title: 'ME' });
+  res.render('csfreferrer', { title: 'Web App' });
 });
 (function() {
     var url = require('url');
@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
     generate = function(aUrl, aReferredUserLogin, aReferredExpires, credentials) {
 	//parse the url into its components
 	var uriObject = url.parse(aUrl);
-        console.log("pagal main tujhko " +credentials);
+        
 	//Caluclate the string to sign
 	var stringToSign = util.format("%s:%s:%s", aReferredUserLogin, aReferredExpires, credentials.accessKeyId);
  
