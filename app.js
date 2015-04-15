@@ -41,9 +41,10 @@ app.post('/csfreferrer', function(req, res){
     var expires = req.body.expires;
     var cred = { accessKeyId: req.body.accessKeyId, secretAccessKey: req.body.secretAccessKey };
     console.log("User name = " + cred + ", password is "+ dst );
-    var testurl = generate(dst, login, expires, cred);
-    console.log("User name = " + cred + ", password is "+ dst );
-    res.render('csfreferrer', { urltest: testurl });
+    
+    var generatedUrl = generate(dst, login, expires, cred);
+   
+    res.render('csfreferrer', { title:'Web App', dst: req.body.url, login: req.body.login, expires: req.body.expires, accesskey: req.body.accessKeyId, secretaccesskey: req.body.secretAccessKey, generatedUrl: generatedUrl});
 });
 
 
@@ -78,7 +79,8 @@ var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
 console.log('Example app listening at http://%s:%s', host, port);
-
+var datenow = validateExpiration();
+    console.log('abhi ki datetime'+ datenow);
 });
 
 
@@ -95,3 +97,9 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+
+//1/ After submitting, re-populate the fields with the previous submission. This will allow the user to do a few tests by changing just one field like timestamp or user login.
+//2/ Place a big red warning near the secret key and advise the user they should not be using a live key for testing their algorithm.
+//3/ If the expiry is in the past, warn the user. If the expiration is more than 6 hours into the future, warn the user that the expiration will be truncated to 6 hours.
+//4/ Include a link to the documentation page: http://complispace.github.io/ReferredSignIn.html

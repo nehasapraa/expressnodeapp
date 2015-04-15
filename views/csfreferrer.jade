@@ -2,11 +2,14 @@ extends layout
 
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p URL for  #{urltest}
-
-  .login
+  
+  h1 Welcome to #{title}
+  if generatedUrl
+     fieldset
+      legend URL
+       p.resulturl  #{generatedUrl}	
+      
+   .login    
     .row
       .col-lg-6.col-lg-offset-3
         form.bs-example.form-horizontal(method='post', action='')
@@ -22,24 +25,43 @@ block content
             .form-group
               label.col-lg-4.control-label(for='login') Login
               .col-lg-4
-                input#login.form-control(type='text', name='login', placeholder='Login', autofocus)
+               if login
+                input#login.form-control(type='text', name='login', placeholder='Login', autofocus, value = "#{login}")
+               else
+                input#login.form-control(type='text', name='login', placeholder='Login', autofocus)               
+
              .form-group
               label.col-lg-4.control-label(for='expires') Expires
               .col-lg-4
-                input#expires.form-control(type='text', name='expires', placeholder='Expires', autofocus)
+               if expires
+                input#expires.form-control(type='text', name='expires', placeholder='Expires', autofocus, value = "#{expires}")
+               else
+                input#expires.form-control(type='text', name='expires', placeholder='Expires', autofocus)   
              .form-group
               label.col-lg-4.control-label(for='accessKeyId') Access Key ID
               .col-lg-4
+               if accesskey
+                input#accessKeyId.form-control(type='text', name='accessKeyId', placeholder='Access Key ID', autofocus, value="#{accesskey}")
+               else
                 input#accessKeyId.form-control(type='text', name='accessKeyId', placeholder='Access Key ID', autofocus)
-             .form-group
+            
+              .form-group
               label.col-lg-4.control-label(for='secretAccessKey') Secret Access Key
               .col-lg-4
+               if secretaccesskey
+                input#secretAccessKey.form-control(type='text', name='secretAccessKey', placeholder='Secret Access Key', autofocus, value="#{secretaccesskey}")
+               else
                 input#secretAccessKey.form-control(type='text', name='secretAccessKey', placeholder='Secret Access Key', autofocus)
+                .col-lg-4
+              label.secretAccessKey(for='secretAccessKey') Please do not use live credentials
+          
              .form-group
-              label.col-lg-4.control-label(for='url') URL
+              label.col-lg-4.control-label(for='secretAccessKey') URL
               .col-lg-4
+               if dst
+                input#url.form-control(type='text', name='url', placeholder='URL', autofocus, value="#{dst}")
+               else
                 input#url.form-control(type='text', name='url', placeholder='URL', autofocus)
-            
 
 
             

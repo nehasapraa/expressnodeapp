@@ -6,3 +6,14 @@ body {
 a {
   color: #00B7FF;
 }
+.secretAccessKey{
+    color:red;
+}
+.col-lg-4{
+    padding: 2.5px;
+    
+}
+.form-group{
+    padding: 6px;
+}
+.resulturl{font-family: "serif", Helvetica, Arial;}

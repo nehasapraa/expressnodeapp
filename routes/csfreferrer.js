@@ -45,7 +45,16 @@ router.get('/', function(req, res, next) {
 })();
 
 
-
+validateExpiration = function(){
+    var datenow = Date.now();
+    if(datenow < 1320969600){
+        var msg = 'abhi ki date jyada hai';
+        
+    }else {
+        var msg = 'nhi hai';
+    }
+    return msg;    
+}
     
 
 
