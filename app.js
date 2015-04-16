@@ -40,7 +40,7 @@ app.post('/csfreferrer', function(req, res){
     var login = req.body.login;
     var expires = req.body.expires;
     var cred = { accessKeyId: req.body.accessKeyId, secretAccessKey: req.body.secretAccessKey };
-    console.log("User name = " + cred + ", password is "+ dst );
+    
     var datenow = validateExpiration(expires);
     var generatedUrl = generate(dst, login, expires, cred);
    
