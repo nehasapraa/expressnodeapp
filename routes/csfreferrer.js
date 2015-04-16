@@ -54,7 +54,7 @@ validateExpiration = function(expirationDate){
         var msg = 'Your expiration is not valid. Please select a valid date.';
         
     }else if(hours> '6') {
-        var msg = 'Your expiration date will be truncated to 6 hours.';
+        var msg = 'Warning: Your expiration date will be truncated to 6 hours.';
     }
     return msg;    
 }
