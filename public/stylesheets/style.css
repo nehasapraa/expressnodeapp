@@ -6,7 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
-.secretAccessKey{
+.secretAccessKey, .errormsg{
     color:red;
 }
 .col-lg-4{

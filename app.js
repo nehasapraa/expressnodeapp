@@ -41,10 +41,10 @@ app.post('/csfreferrer', function(req, res){
     var expires = req.body.expires;
     var cred = { accessKeyId: req.body.accessKeyId, secretAccessKey: req.body.secretAccessKey };
     console.log("User name = " + cred + ", password is "+ dst );
-    
+    var datenow = validateExpiration(expires);
     var generatedUrl = generate(dst, login, expires, cred);
    
-    res.render('csfreferrer', { title:'Web App', dst: req.body.url, login: req.body.login, expires: req.body.expires, accesskey: req.body.accessKeyId, secretaccesskey: req.body.secretAccessKey, generatedUrl: generatedUrl});
+    res.render('csfreferrer', { title:'Web App', dst: req.body.url, login: req.body.login, expires: req.body.expires, accesskey: req.body.accessKeyId, secretaccesskey: req.body.secretAccessKey, generatedUrl: generatedUrl, errMsg:datenow});
 });
 
 
@@ -79,8 +79,8 @@ var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
 console.log('Example app listening at http://%s:%s', host, port);
-var datenow = validateExpiration();
-    console.log('abhi ki datetime'+ datenow);
+
+   
 });
 
 

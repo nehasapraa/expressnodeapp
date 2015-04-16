@@ -21,7 +21,10 @@ block content
                 p.
                   #{error}
             p.last-p.
-             
+            if errMsg
+              
+                p.errormsg  #{errMsg}
+            
             .form-group
               label.col-lg-4.control-label(for='login') Login
               .col-lg-4

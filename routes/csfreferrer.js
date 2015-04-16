@@ -45,13 +45,16 @@ router.get('/', function(req, res, next) {
 })();
 
 
-validateExpiration = function(){
-    var datenow = Date.now();
-    if(datenow < 1320969600){
-        var msg = 'abhi ki date jyada hai';
+validateExpiration = function(expirationDate){
+    var datenow =  Date.now();
+    var msg = '';
+    var hours = ((expirationDate - datenow)/(1000*60*60))%24
+
+    if(datenow > expirationDate){
+        var msg = 'Your expiration is not valid. Please select a valid date.';
         
-    }else {
-        var msg = 'nhi hai';
+    }else if(hours> '6') {
+        var msg = 'Your expiration date will be truncated to 6 hours.';
     }
     return msg;    
 }
